@@ -1,0 +1,248 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminNavbar.Master.cs" Inherits="Online_E_Learning_System.navbar" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+
+    <!-- bootstap cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!-- FontAwesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- JQuery cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- google fonts cdn-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,200;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+
+    <%--<link href="css/navbar.css" rel="stylesheet" />--%>
+    <link href="css/sidenavbar.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="margin-left: 228px; border-bottom: solid 2px;">
+            <!-- TopNavBar-->
+            <nav class="navbar navbar-expand-lg " style="background-color: #F2F4F4; margin-bottom: 0; height:56px">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                            <li class="nav-item">
+                                <a class="nav-link active ms-4" aria-current="page" href="#"></a>
+                            </li>
+                        </ul>
+                        <%--<div class="d-flex">
+                        </div>
+                        <div class="d-flex"></div>--%>
+                        <div class="">
+                            <ul class="nav navbar-nav navbar-right  ">
+                                <li><a id="sinup_id" runat="server" href="registerpage.aspx" class="mx-3" style="text-decoration: none; color: black;"><i class="fa fa-sign-in"></i>&nbsp;SignUp</a></li>
+                                <li><a id="login_id" runat="server" href="loginpage.aspx" style="text-decoration: none; color: black;"><i class="fa fa-sign-in"></i>&nbsp;Login</a></li>
+                               <%-- <li><a id="logout_id" runat="server" href="maindash.aspx" style="text-decoration: none; color: black;"><i class="fa fa-sign-in"></i>LogOut</a></li>--%>
+                                <li>
+                                    <div id="userlogo" runat="server">
+                                    <i class="fa-solid fa-user"></i><asp:Label ID="Label2" class="mx-3" runat="server" Text=""></asp:Label>
+                                        </div></li>
+                                <li><asp:LinkButton ID="Link_logout" OnClick="Link_logout_Click1" style="text-decoration: none; color: black;" runat="server"><i class="fa fa-sign-in"></i>&nbsp;LogOut</asp:LinkButton></li>
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <%--<div style="margin-left: 230px; border-bottom: solid 2px; ">
+            <!-- TopNavBar-->
+
+            <nav class="navbar navbar-expand-lg navbar-light tnav " style ="margin-bottom:0">
+                <div class="container-fluid">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <a class="navbar-brand" href="maindash.aspx">E-Learning Portal</a>
+                       
+                        <ul class="nav navbar-nav navbar-right ">
+                            <div style="flex: 1"></div>
+                            <li class="nav-item active pe-4 " style="display: flex;">
+                                <asp:Image ID="profileimg" class="rounded-circle user-pic " Height="40px" Width="40px" asp-append-version="true" runat="server" ImageUrl='<%#Eval("emp_profileimg") %>' onclick="toggleMenu()" />
+                                <asp:Label ID="username" class="nav-link" runat="server"></asp:Label>
+                                <div class="sub-menu-wrap" id="subMenu">
+                                    <div class="sub-menu">
+                                        <a href="UserProfile.aspx" class="sub-menu-link">
+                                            <i class="fass fa-solid fa-user-pen"></i>
+                                            <span class="nav-items">Profile</span>
+                                        </a>
+                                        <hr>
+                                        <a href="UserProfileCard.aspx" class="sub-menu-link">
+                                            <i class="fass fa-solid fa-gear"></i>
+                                            <span class="nav-items">Settings</span>
+
+                                        </a>
+                                        <hr>
+                                        <asp:LinkButton ID="Logout" runat="server" class="sub-menu-link" > <i class="fass fa-solid fa-right-from-bracket"></i>
+                                             <span class="nav-items">Logout</span>
+                                        </asp:LinkButton>--%>
+        <%--<a href="Login.aspx" class="sub-menu-link">
+                                    <i class="fass fa-solid fa-right-from-bracket"></i>
+                                    <span class="nav-items">Logout</span>
+                                </a>--%>
+        <%--  </div>
+                                </div>
+                            </li>
+                            <li class="nav-item active"></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>--%>
+
+        <!-- SideNavbar-->
+        <nav class="sidenav" style="height: 165%; z-index: 1000; position: fixed; top: 0; left: 0">
+            <ul class="side-items">
+                <li>
+                     <h4 style="padding:12px" class="">E-Learning Portal</h4>
+                    <%--  <a href="#"  style="text-decoration:none" >--%>
+                   <%-- <img src="image/E-learn_icon.png" class="logo " alt="logo">--%>
+                    <%--  <span class="nav-items">E-Learning Portal</span>--%>
+                    <%-- </a>--%>
+                </li>
+                <hr style="border-top: 2px solid; margin-top: -5px;" />
+                <li>
+                    <asp:LinkButton ID="Adminhome" runat="server" class="items" href="admin_homepage.aspx">
+                    <i class="fass fa-solid fa-house"></i>
+                    <span class="nav-items">Home</span>
+                    </asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="teacherhome1" runat="server" class="items" href="Teacherhome.aspx">
+                    <i class="fass fa-solid fa-house"></i>
+                    <span class="nav-items">Home</span>
+                    </asp:LinkButton></li>
+
+                <li>
+                    <asp:LinkButton ID="course_insert" runat="server" class="items" href="course_update.aspx"><i class="fass fa-solid fa-book"></i>
+                    <span class="nav-items">Insert Course</span></asp:LinkButton></li>
+
+                <li>
+                    <asp:LinkButton ID="Questionanswer" runat="server" href="questionAnswerAdmin.aspx" class="items"><i class="fass fa fa-reply"></i>
+                    <span class="nav-items">Question Answer</span></asp:LinkButton></li>
+
+                <li>
+                    <asp:LinkButton ID="updtecourse" runat="server" href="upadtecoursecontent.aspx" class="items"><i class="fass fa-sharp fa-solid fa-edit"></i>
+                    <span class="nav-items">Update Course</span></asp:LinkButton></li>
+
+                <li>
+                    <asp:LinkButton ID="viewuser" runat="server" href="viewUser.aspx" class="items"><i class="fass fa-solid fa-user"></i>
+                    <span class="nav-items">View User</span></asp:LinkButton></li>
+
+               <li>
+                    <asp:LinkButton ID="viewteacher" runat="server" href="showteacher.aspx" class="items"><i class="fass fas fa-chalkboard-teacher"></i>
+                    <span class="nav-items">View Teacher</span></asp:LinkButton></li>
+
+                 <li>
+                    <asp:LinkButton ID="addteacher" runat="server" href="RegisterTeacher.aspx" class="items"><i class="fass fa-solid fa-user-plus"></i>
+                    <span class="nav-items">Register Teacher</span></asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="updatePass" runat="server" href="changepassword.aspx" class="items"><i class="fass fa-solid fa-edit"></i>
+                    <span class="nav-items">Update Password</span></asp:LinkButton></li>
+            </ul>
+        </nav>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
+
+<%-- <style>
+        body {
+            background-color: #fbfbfb;
+        }
+
+        @media (min-width: 991.98px) {
+            main {
+                padding-left: 240px;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 58px 0 0; /* Height of navbar */
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+            width: 240px;
+            z-index: 600;
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+        .item:hover{
+             background-color:aqua;
+        }
+        /*.sidebar .active {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+        }*/
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: calc(100vh - 48px);
+            padding-top: 0.5rem;
+            overflow-x: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        }
+    </style>--%>
+
+<!-- Sidebar -->
+<%-- <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item" aria-current="true">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                    </a>
+                    <a href="course_update.aspx" class="list-group-item list-group-item-action py-2 ripple item ">
+                        <i class="fas fa-chart-area fa-fw me-3"></i><span>Course Update</span>
+                    </a>
+                    <a href="insertimages.aspx" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-lock fa-fw me-3"></i><span>Insert Topic Images</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item">
+                        <i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-globe fa-fw me-3"></i><span>International</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-building fa-fw me-3"></i><span>Partners</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple item"><i
+                        class="fas fa-users fa-fw me-3"></i><span>Users</span></a>
+                   
+                </div>
+            </div>
+        </nav>--%>
+       
+
+               
